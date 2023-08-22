@@ -1,0 +1,114 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+:root {
+  --toggle-size: 400px;
+  --toggle-inner-spacing: calc(var(--toggle-size)/10);
+  --transition: all .3s ease-in;
+  --main-color: white;
+  --oposite-color: black;
+  
+  
+  &:has([name="theme-toggle"]:checked) {
+    --main-color: #FCE570;
+    --oposite-color: white;
+  }
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin:0;
+  padding:0;
+  min-height: 100dvh;
+  background-image: url('https://wtf.jm-f.ch/images/water.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(15px);
+  &:has([name="theme-toggle"]:checked) {
+      background-image: url('https://wtf.jm-f.ch/images/desert.png');
+  }
+}
+
+.toggle {
+  display: block;
+  background: color-mix(in srgb, var(--main-color) 30%, black);
+  border: none;
+  width: calc(var(--toggle-size)*2);
+  height: var(--toggle-size);
+  border-radius: calc(var(--toggle-size)*2);
+  position: relative;
+  background-image: url('https://wtf.jm-f.ch/images/water.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  transition: var(--transition), background 0s linear;
+  box-shadow: 5px 25px 80px rgba(0,0,0,.2);
+  
+  &:after {
+    content: '';
+    background: white; 
+    background: url('https://wtf.jm-f.ch/images/trex.svg') no-repeat;
+    background-size: contain;
+    height: calc(var(--toggle-size)*1.4);
+    aspect-ratio: 1/1;
+    position: absolute;
+    left: calc(var(--toggle-inner-spacing)*-1);
+    top: calc(var(--toggle-inner-spacing)*.6);
+    transition: var(--transition), background 0s linear;
+    background-position: center;
+    
+    background: url('https://wtf.jm-f.ch/images/mosasaure.svg') no-repeat;
+    scale: -1 1;
+    left: calc(var(--toggle-inner-spacing)*-3);
+  }
+}
+
+.toggle:has(input:checked) {  
+     background-image: url('https://wtf.jm-f.ch/images/desert.png');
+  
+   
+   &:after {
+     background: url('https://wtf.jm-f.ch/images/mosasaure.svg') no-repeat;
+    left: 100%;
+    translate: -80% 0;
+     
+     
+     background: url('https://wtf.jm-f.ch/images/trex.svg') no-repeat;
+    translate: -90% 0;
+  }
+}
+
+.checkbox {
+  display: none;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  padding: 20px;
+  color: rgba(0,0,0,.5);
+  font-size: 14px;
+}
+
+a {
+  text-decoration: none;
+  color: rgba(0,0,0,.5);
+}
+
+a:hover {
+  text-decoration: underline;
+}
